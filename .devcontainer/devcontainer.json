@@ -1,0 +1,35 @@
+{
+  "name": "OpenPRIME-Final with Ollama",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [11434, 8000, 3000],
+  "portsAttributes": {
+    "11434": {
+      "label": "Ollama",
+      "onAutoForward": "notify"
+    },
+    "8000": {
+      "label": "Web Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "GitHub.copilot",
+        "ms-vscode.makefile-tools"
+      ],
+      "settings": {
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black"
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}
